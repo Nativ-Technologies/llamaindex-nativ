@@ -8,9 +8,8 @@ from __future__ import annotations
 
 from typing import List, Optional
 
-from llama_index.core.tools.tool_spec.base import BaseToolSpec
-
 import nativ as _nativ_sdk
+from llama_index.core.tools.tool_spec.base import BaseToolSpec
 
 
 def _fmt_translation(t: _nativ_sdk.Translation) -> str:
@@ -86,8 +85,8 @@ class NativToolSpec(BaseToolSpec):
         Args:
             text: The text to translate.
             target_language: Full target language name, e.g. 'French', 'German'.
-            target_language_code: ISO language code, e.g. 'fr'. Auto-detected if omitted.
-            source_language: Source language name.
+            target_language_code: ISO language code, e.g. 'fr'.
+                Auto-detected if omitted.
             source_language_code: Source language ISO code.
             context: Context to guide the translation, e.g. 'mobile app button'.
             glossary: Inline glossary as CSV, e.g. 'term,translation\\nbrand,marque'.
@@ -246,7 +245,7 @@ class NativToolSpec(BaseToolSpec):
         return f"Brand voice:\n{bv.prompt}"
 
     def get_translation_memory_stats(self) -> str:
-        """Get translation memory statistics: total entries, enabled/disabled, breakdown by source."""
+        """Get TM stats: total entries, enabled/disabled, by source."""
         with self._client() as c:
             stats = c.get_tm_stats()
         lines = [

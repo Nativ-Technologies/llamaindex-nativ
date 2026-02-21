@@ -8,8 +8,6 @@ from __future__ import annotations
 
 from unittest.mock import MagicMock, patch
 
-import pytest
-
 from llamaindex_nativ import NativToolSpec
 
 FAKE_KEY = "nativ_test_00000000000000000000000000000000"
